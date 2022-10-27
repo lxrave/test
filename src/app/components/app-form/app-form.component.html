@@ -1,0 +1,31 @@
+<div class="form-container">
+  <mat-card>
+    <mat-card-title>Parameters from server</mat-card-title>
+    <mat-card-content>
+      <p> Count: {{(formCount$ | async) ?? 'N/A'}}</p>
+      <p> Delay: {{(formDelay$ | async) ?? 'N/A'}}</p>
+    </mat-card-content>
+  </mat-card>
+  <form [formGroup]="actionForm" (ngSubmit)="onSubmit(actionForm)">
+    <div class="form-line">
+      <label>
+        Action:
+        <input formControlName="action" placeholder="The action">
+      </label>
+    </div>
+    <div class="form-line">
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+    </div>
+  </form>
+  <div class="result-container">
+    <app-app-form-results [pool$]="pool"></app-app-form-results>
+  </div>
+</div>
+<style type="text/css">
+  .form-container {
+    margin: 15px 10px;
+  }
+  .form-line {
+    margin: 15px 0;
+  }
+</style>
