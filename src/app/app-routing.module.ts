@@ -5,7 +5,7 @@ import { FormResolver } from "./services/FormResolver";
 
 const routes: Routes = [
   {
-    path: 'form',
+    path: '',
     component: AppFormComponent,
     resolve: {
       formInitialData: FormResolver
