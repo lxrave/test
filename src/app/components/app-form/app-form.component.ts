@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from "@angular/router";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { map, Observable, switchMap } from "rxjs";
+import { map, Observable, tap } from "rxjs";
 import { SimulateParams } from "../../services/types";
 import { PoolItemType, PoolService } from "../../services/PoolService";
 
@@ -40,7 +40,7 @@ export class AppFormComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     const sub$$ = this.data$.pipe(
-      switchMap((data) => this.poolService.makePoolStream(data.count, data.delay))
+      tap((data) => this.poolService.makePoolStream(data.count, data.delay))
     ).subscribe()
     sub$$.unsubscribe()
   }
